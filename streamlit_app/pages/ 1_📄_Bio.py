@@ -6,7 +6,7 @@ st.title("📄 Professional Bio")
 
 # Try to load an optional profile image
 assets_dir = Path(__file__).resolve().parent.parent / "assets"
-profile_path = assets_dir / "profile.jpg"
+profile_path = assets_dir / "image0.jpeg"
 
 col1, col2 = st.columns([1, 2])
 
