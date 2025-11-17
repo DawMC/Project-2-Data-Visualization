@@ -9,7 +9,7 @@ st.set_page_config(
 )
 
 # --------- Branding header ----------
-st.title("📊 Dawson Cummings — Data & Analytics Portfolio")
+st.title("📊 Dawson Cummings — Data Visualization")
 st.caption("Multi-page Streamlit app combining a professional bio, an EDA gallery, and an interactive dashboard.")
 
 col1, col2 = st.columns([2, 1])
@@ -37,7 +37,6 @@ with col2:
         """
         - Name: **Dawson Cummings**  
         - Email: `dcummin8@msudenver.edu`  
-        - GitHub: [github.com/your-handle](https://github.com)
         """
     )
     st.markdown("### App Info")
