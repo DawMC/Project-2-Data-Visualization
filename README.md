@@ -56,3 +56,5 @@ The visualizations are **descriptive only** and should not be used to judge indi
 All dependencies are listed in `requirements.txt`.  
 Minimum packages include:
 
+# Use of AI
+ChatGPT was used and referenced when I was making this project
