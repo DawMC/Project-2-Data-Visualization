@@ -21,7 +21,7 @@ with col1:
         st.info("You can add `assets/profile.jpg` to show a profile image here.")
 
 with col2:
-    st.subheader("Hi, I’m Dawson ")
+    st.subheader("Hi, I'm Dawson ")
     st.markdown(
         """
         I'm a Computer Science Major with a Business minor. I am graduating in December and will be trying to go

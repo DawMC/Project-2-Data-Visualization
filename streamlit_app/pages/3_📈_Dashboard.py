@@ -11,7 +11,7 @@ st.title("📈 Student Performance Dashboard")
 @st.cache_data
 def load_data():
     root = Path(__file__).resolve().parent.parent
-    data_path = root / "data" / "students_performance.csv"
+    data_path = root / "data" / "StudentsPerformance.csv"
     df = pd.read_csv(data_path)
     return df
 
@@ -19,13 +19,13 @@ try:
     df = load_data()
 except FileNotFoundError:
     st.error(
-        "Could not find `data/students_performance.csv`.\n\n"
+        "Could not find `data/StudentsPerformance.csv`.\n\n"
         "Add your dataset (e.g., Kaggle 'StudentsPerformance') to `data/` and reload."
     )
     st.stop()
 
 st.caption(
-    f"Data source: **students_performance.csv** (e.g., Kaggle StudentsPerformance dataset) • "
+    f"Data source: **StudentsPerformance.csv** (e.g., Kaggle StudentsPerformance dataset) • "
     f"Last refreshed: **{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}**"
 )
 

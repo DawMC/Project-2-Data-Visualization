@@ -36,8 +36,7 @@ with col2:
     st.markdown(
         """
         - Name: **Dawson Cummings**  
-        - Email: `your.email@school.edu`  
-        - LinkedIn: [linkedin.com/in/your-handle](https://www.linkedin.com)  
+        - Email: `dcummin8@msudenver.edu`  
         - GitHub: [github.com/your-handle](https://github.com)
         """
     )
