@@ -1,0 +1,51 @@
+import streamlit as st
+import networkx as nx
+import matplotlib.pyplot as plt
+import pandas as pd
+from networkx.algorithms.community import greedy_modularity_communities
+
+st.title("👥 Friendship Network – How It Works")
+
+# Build graph (same as above)
+nodes = ["Alice","Bob","Charlie","Diana","Eve","Frank","Grace","Hannah","Ian","Jack"]
+edges = [
+    ("Alice","Bob"),("Alice","Charlie"),("Bob","Charlie"),("Charlie","Diana"),
+    ("Diana","Eve"),("Bob","Diana"),("Frank","Eve"),("Eve","Ian"),
+    ("Diana","Ian"),("Ian","Grace"),("Grace","Hannah"),("Hannah","Jack"),
+    ("Grace","Jack"),("Charlie","Frank"),("Alice","Eve"),("Bob","Jack")
+]
+G = nx.Graph()
+G.add_nodes_from(nodes)
+G.add_edges_from(edges)
+
+# Metrics
+deg_cent = nx.degree_centrality(G)
+bet_cent = nx.betweenness_centrality(G)
+clo_cent = nx.closeness_centrality(G)
+
+df = pd.DataFrame({
+    "Person": nodes,
+    "Degree": [G.degree(n) for n in nodes],
+    "Degree Centrality": [deg_cent[n] for n in nodes],
+    "Betweenness": [bet_cent[n] for n in nodes],
+    "Closeness": [clo_cent[n] for n in nodes],
+})
+
+most_influential = max(bet_cent, key=bet_cent.get)
+
+# Visualization
+pos = nx.spring_layout(G, seed=42)
+colors = ["red" if n == most_influential else "skyblue" for n in nodes]
+
+fig, ax = plt.subplots()
+nx.draw(G, pos, with_labels=True, node_color=colors, node_size=800, ax=ax)
+ax.set_title(f"Friendship Network (Influencer in Red: {most_influential})")
+st.pyplot(fig)
+
+st.subheader("Centrality Table")
+st.dataframe(df)
+
+communities = list(greedy_modularity_communities(G))
+st.subheader("Friendship Groups (Communities)")
+for i, comm in enumerate(communities, 1):
+    st.write(f"Group {i}: {', '.join(sorted(comm))}")
